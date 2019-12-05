@@ -1,10 +1,6 @@
 // Question Set
 var myQuestions = [
     {
-        question: "Welcome to the Coding Quiz!",
-    },
-
-    {
         question: "Commonly used data types DO NOT include:",
         answers: {
             a: "strings",
@@ -56,6 +52,7 @@ var myQuestions = [
     }
 ];
 
+
 // Code for Each Question
 
 function buildQuiz() {
@@ -87,7 +84,6 @@ function buildQuiz() {
 
 }
 
-
 // Show Results of Quiz
 function showResults() {
     var answerContainers = quizContainer.querySelectorAll('.answers');
@@ -104,7 +100,13 @@ function showResults() {
     });
 
     resultsContainer.innerHTML = numCorrect + ' out of ' + myQuestions.length;
+
+    showNextPage();
+
+
 }
+
+
 
 // Transition of Pages
 function showPage(n) {
@@ -114,19 +116,30 @@ function showPage(n) {
     currentPage = n;
 
     if (currentPage === 0) {
+        nextButton.style.display = 'none';
+        startButton.style.display = 'inline-block';
         previousButton.style.display = 'none';
     }
     else {
         previousButton.style.display = 'inline-block';
+        nextButton.style.display = 'inline-block';
+        startButton.style.display = 'none';
     }
     if (currentPage === pages.length - 1) {
         nextButton.style.display = 'none';
         submitButton.style.display = 'inline-block';
+        startButton.style.display = 'none';
     }
-    else {
+    else if (currentPage === pages.length) {
         nextButton.style.display = 'inline-block';
+    } 
+    else {
         submitButton.style.display = 'none';
     }
+}
+
+function startQuiz() {
+    showPage(currentPage + 1);
 }
 
 function showNextPage() {
@@ -136,6 +149,7 @@ function showNextPage() {
 function showPreviousPage() {
     showPage(currentPage - 1);
 }
+
 
 var quizContainer = document.querySelector('#quiz');
 var resultsContainer = document.querySelector('#results');
@@ -148,6 +162,8 @@ buildQuiz();
 var previousButton = document.querySelector("#previous");
 var nextButton = document.querySelector("#next");
 var pages = document.querySelectorAll(".page");
+var startButton = document.querySelector("#start");
+
 var currentPage = 0;
 
 showPage(0);
@@ -156,6 +172,8 @@ showPage(0);
 submitButton.addEventListener('click', showResults);
 previousButton.addEventListener("click", showPreviousPage);
 nextButton.addEventListener("click", showNextPage);
+startButton.addEventListener("click", startQuiz);
+
 
 
 

@@ -15,18 +15,28 @@
 <body>
 
     <!-- Question Text  -->
-    <h1>UNC Chapel Hill Coding Bootcamp Quiz</h1>
+    <div id ="time"></div>
+    <h1 class="highscores">View Highscores</h1>
     <div class="quiz-container">
         <div id="quiz"></div>
     </div>
+    <div id="names">
+        <form id="name-form" method="POST">
+            <!-- <input type="text" placeholder="Your Name" name="name-text" id="name-text" /> -->
+        </form>
+    </div>
+    <button id="start">Start</button>
     <button id="previous">Previous Question</button>
     <button id="next">Next Question</button>
     <button id="submit">Submit Quiz</button>
     <div id="results"></div>
 
 
-    <!-- Page Javascript -->
-    <script src="./Javascript/javascript.js"> </script>
+    <!-- Javascript -->
+    <script src="./Javascript/quiz.js"> </script>
+    <script src="./Javascript/timer.js"> </script>
+    <script src="./Javascript/initials.js"> </script>
+
 
 </body>
 
