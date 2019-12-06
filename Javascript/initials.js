@@ -1,6 +1,7 @@
 var nameInput = document.querySelector("#name-text");
 var nameForm = document.querySelector("#name-form");
 var nameList = document.querySelector("#name-list");
+var submitButton = document.querySelector("#submit");
 
 var names = [];
 
@@ -39,6 +40,7 @@ function storeNames() {
     localStorage.setItem("names", JSON.stringify(names));
 }
 
+
 nameForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -59,3 +61,4 @@ nameForm.addEventListener("submit", function (event) {
 function showFinalPage() {
     showPage(currentPage + 1);
 }
+
